@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Autor } from '../autor';
-import { Genero } from './genero.enum';
+import { AutorService } from './autor.service';
+  import { Genero } from './genero.enum';
 
 @Component({
   selector: 'app-autores',
@@ -8,30 +9,23 @@ import { Genero } from './genero.enum';
   styleUrls: ['./autores.page.scss'],
 })
 export class AutoresPage implements OnInit {
-  autores: Autor[];
 
-  constructor() 
-  {
-    this.autores = 
-    [
-      {
-        nome: 'David Flanagan',
-        dataNascimento: new Date(1980,11,13), 
-        genero:Genero.MASCULINO,
-      },
-      {
-        nome: 'Douglas Cockford',
-        dataNascimento: new Date(1975,5,17), 
-        genero:Genero.MASCULINO,
-      },
-      {
-        nome: 'Martin Fowler',
-        dataNascimento: new Date(1955,6,15), 
-        genero:Genero.MASCULINO,
-      }
-    ];
+  autores: Autor[];  
+
+  constructor
+    (private AutorService: AutorService
+  ) {    
+      this.autores = this.AutorService.getAutores();
+} 
+  ngOnInit() { }
+
+  listar(){
+    this.autores = this.AutorService.getAutores();
   }
-  ngOnInit() {
+
+  excluir(autor: Autor){
+    this.AutorService.excluir(autor.id);
   }
 
 }
+

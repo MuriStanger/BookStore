@@ -40,6 +40,7 @@ export class AutorService {
   }
 
   excluir(id: number){
-    this.autores = this.autores.filter(a => a.id === id);
+    this.autores = this.autores.filter(a => a['id'] === id);
+    console.log(this.autores);
   }
 }

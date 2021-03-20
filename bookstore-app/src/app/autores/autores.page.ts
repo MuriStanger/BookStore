@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Autor } from '../autor';
+import { Autor } from './autor';
 import { AutorService } from './autor.service';
   import { Genero } from './genero.enum';
 
@@ -25,6 +25,7 @@ export class AutoresPage implements OnInit {
 
   excluir(autor: Autor){
     this.AutorService.excluir(autor.id);
+    this.listar();
   }
 
 }

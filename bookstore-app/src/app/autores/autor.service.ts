@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Autor } from '../autor';
+import { Autor } from './autor';
+
 import { Genero } from './genero.enum';
 
 @Injectable({
@@ -40,7 +41,7 @@ export class AutorService {
   }
 
   excluir(id: number){
-    this.autores = this.autores.filter(a => a['id'] === id);
-    console.log(this.autores);
+    this.autores = this.autores.filter(a => a.id !== id);
   }
+  
 }

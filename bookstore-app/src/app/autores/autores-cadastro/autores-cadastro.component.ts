@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Autor } from '../autor';
 import { AutorService } from '../autor.service';
@@ -10,8 +11,42 @@ import { Genero } from '../genero.enum';
   styleUrls: ['./autores-cadastro.component.scss'],
 })
 export class AutoresCadastroComponent implements OnInit {
+  autor: Autor;
 
-  autor: Autor; 
+
+
+  mesesAbreviados = [
+    'Jan',
+    'Fev',
+    'Mar',
+    'Abr',
+    'Mai',
+    'Jun',
+    'Jul',
+    'Ago',
+    'Set',
+    'Out',
+    'Nov',
+    'Dez',
+  ];
+
+  meses  = ['Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+];
+
+form: FormGroup;
+
+ 
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,12 +61,20 @@ export class AutoresCadastroComponent implements OnInit {
             nome: '',
             dataNascimento: null,
             genero: Genero.FEMININO
-          }
+          };
       }
+
+      this.form = new FormGroup({
+        nome: new FormControl('')
+      });
       console.log(this.autor)
      }
     
 
   ngOnInit() {}
+
+  salvar(){
+    console.log(this.autor);
+  }
 
 }

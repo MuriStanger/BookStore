@@ -6,5 +6,3 @@ export class Autor {
     dataNascimento: Date;
     genero: Genero;
 }
-
-//constructor(){}
